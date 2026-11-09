@@ -10,6 +10,21 @@ metadata:
     url: "https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md"
 ---
 
+## Reader and language
+
+The reader is a human reviewer. They did not see the design discussion, the spec, or your session. Write so that they understand the change from the PR alone.
+
+- Write prose in ASD-STE100: one topic per sentence, at most 20 words for a procedure and 25 for a description, active voice, plain approved words. Write "for example", not "e.g.".
+- Skip preambles. Use the user's domain language from `GLOSSARY.md`.
+- Use only references the reviewer can open: issue links, PR numbers, files in the repo. A short spec section reference (for example §4.6) is fine when the team process uses it. Spec decision ids, local paths outside the repo, and session notes stay out.
+- Put the content in this order:
+  1. The problem, in one or two sentences.
+  2. What changes: one small visual per change, next to its text (see [Summary](#summary)).
+  3. Why, only for the parts that are not obvious.
+  4. What the reviewer must decide or know.
+
+  The body ends after item 4, with no tests or test plan section.
+
 Use this template for writing the PR body:
 
 ```markdown
@@ -19,8 +34,6 @@ Use this template for writing the PR body:
 ```
 
 ## Sections
-
-Skip all preambles and keep prose brief. Use the user's domain language from `GLOSSARY.md`.
 
 ### Summary
 
