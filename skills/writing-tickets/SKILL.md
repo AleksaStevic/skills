@@ -48,6 +48,19 @@ Two variants: **Bug** and **Task**. One per ticket, never merged.
 <!-- Optional: out of scope, links, pointers. Delete the whole section if empty. -->
 ```
 
+## Reader and language
+
+The reader is a human who picks up the ticket: an engineer, QA, or a PM. They did not see the
+conversation, your session, or the code you read. Write so that they understand the ticket from
+the ticket alone.
+
+- Write in ASD-STE100 English, whatever language the conversation is in: one topic per sentence,
+  at most 20 words for a procedure (STR steps) and 25 for a description, active voice, plain
+  approved words. Write "for example", not "e.g.".
+- Be concise: start with the point, and give every sentence a fact the reader needs.
+- Use only references the reader can open: ticket keys, PR and commit links, files in the repo.
+  Local paths and session notes stay out.
+
 ## Style
 
 - Context is one or two concise paragraphs of plain prose. Every other section is bullets.
@@ -58,7 +71,6 @@ Two variants: **Bug** and **Task**. One per ticket, never merged.
 - Why in one sentence: causality for the reader, not evidence.
 - No trade-offs, alternatives, or decision framing. Facts and the fix.
 - Concepts over implementation minutiae.
-- English always, whatever language the conversation is in.
 - Body fits on one screen. Audits, measurement dumps, file inventories go in a ticket comment
   or a linked doc, referenced from one bullet.
 - Delete any section that does not apply. Never pad it with filler.
@@ -91,23 +103,23 @@ Title: `Daily report shows yesterday's totals for users in UTC+13`
 
 ```markdown
 ## Context
-Employees in New Zealand see the previous day's numbers in the daily report all morning. It hits
-every employee more than a few hours ahead of UTC, every day.
+Employees in New Zealand see the previous day's numbers in the daily report all morning. This
+occurs every day for each employee who is many hours ahead of UTC.
 
-The date range is built from the server clock, not the employee's timezone. At UTC+13 the server
-is still on the previous calendar day for most of the local morning.
+The report calculates the date range from the server clock, not from the employee's timezone. At
+UTC+13, the server clock shows the previous day for most of the local morning.
 
 ## STR
 1. Set an employee's timezone to Pacific/Auckland.
 2. Open the daily report before noon local time.
 
 ## ER
-- The report shows the employee's local day, matching the date in the header.
+- The report shows the totals for the date in the header.
 
 ## AR
-- The header says today's date, the totals belong to yesterday.
+- The header shows today's date, but the totals are for yesterday.
 
 ## More info
-- The range helper takes no timezone argument, so every caller gets the server day.
+- The range helper has no timezone argument, so all callers get the server day.
 - [Report screenshot](https://example.com/screenshot)
 ```
